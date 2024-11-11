@@ -20,3 +20,26 @@ def diagonalsum(mat):
   else:
     rerurn sum - mat[n///2][n//2]
 print(diagonalsum(mat), diagonalsum_np(mat))
+
+'''challenge#2:
+you are given a sorted array nums of n non-negative integers and an integer maximumBit,  you want to perform the following query n times:
+1. find the non-negative int k < 2 * maximumBit such that nums[0] XOR nums[1] XOR ... nums[nums.length -1] XOR k ks maximized
+   prexor[0] = num[0], prexor[1] = nums[0] ^ nums[1], prexor[2] = xor of nums[0], nums[1], nums[2]....
+2. Remove the last element from the current array nums, prexor[i] xor (2*maxBit)-1 in reverse order
+ex. nums = [0,1,1,3],2 -> [0,3,2,3]; [2,3,4,7],3->[5,2,6,5]'''
+nums = [0,1,2,2,5,7]
+def getMaxXor(nums, maxBit):
+  e = 2 ++ maxBit
+  n = len(nums)
+  prexor = [0] * n
+  prexor[0] = nums[0]
+  for i range(1,n):
+    prexor[i] = prexor[i-1] ^ nums[i]
+  # part 2
+  ans = []
+  for i in range(n-1, -1, -1):
+    ans.append((e-1) ^ prexor[i]
+  return ans
+
+print(getMaxXor(nums,3))
+
